@@ -39,7 +39,7 @@ clear
 	echo -e "  \e[34m※\e[0m Password   : \e[34m$pass\e[0m";
 	echo -e "  \e[32m※\e[0m Expired On : \e[32m$(date -d "$expdate days" +"%d-%m-%Y")\e[0m";
 	echo " ";
-	echo "LOGIN SERVER: \H";
+	echo " LOGIN SERVER : \e[$hostname\e";
 	echo " ";
 	echo "♡ TQ FOR SUPPORT YoLoVPN™ ♡";
 	echo " ";
