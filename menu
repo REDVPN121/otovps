@@ -24,12 +24,12 @@ clear
 	echo " ";
 	echo -e " \e[36m※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※
  ※                                 ※
- ※\e[0m  WELCOME MY SYSTEM ghostjackVPS \e[36m※
+ ※\e[0m  WELCOME MY SYSTEM YoLoVPN \e[36m※
  ※                                 ※
- ※\e[0m   \e[35mWhatsApp\e[0m   \e[36m:\e[0m \e[33m+601161604107\e[0m     \e[36m※
- ※\e[0m   \e[35mTelegram\e[0m    \e[36m:\e[0m \e[33mghostjack\e[0m       \e[36m※
+ ※\e[0m   \e[35mWhatsApp\e[0m   \e[36m:\e[0m \e[33m+-\e[0m     \e[36m※
+ ※\e[0m   \e[35mTelegram\e[0m    \e[36m:\e[0m \e[33mRay\e[0m       \e[36m※
  ※                                 ※
- ※\e[0m        \e[31m©\e[0m ghostjackVPS™ \e[31m®\e[0m        \e[36m※
+ ※\e[0m        \e[31m©\e[0m YOLOVPN™ \e[31m®\e[0m        \e[36m※
  ※                                 ※
  ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※\e[0m";
 	echo "
@@ -74,10 +74,10 @@ clear
  ※                                 ※
  ※\e[0m  WELCOME MY SYSTEM \e[36m※
  ※                                 ※
- ※\e[0m   \e[35mWhatsApp\e[0m   \e[36m:\e[0m \e[33m+601161604107\e[0m     \e[36m※
- ※\e[0m   \e[35mTelegram\e[0m    \e[36m:\e[0m \e[33mghostjack\e[0m       \e[36m※
+ ※
+ ※
  ※                                 ※
- ※\e[0m        \e[31m©\e[0m ghostjackVPS™ \e[31m®\e[0m        \e[36m※
+ ※\e[0m        \e[31m©\e[0m YOLOVPN™ \e[31m®\e[0m        \e[36m※
  ※                                 ※
  ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※\e[0m";
 	echo "
@@ -86,7 +86,7 @@ clear
 	echo -e "  \e[34m※\e[0m Username   : \e[34m$uname\e[0m";
 	echo -e "  \e[32m※\e[0m New Expiry : \e[32m$(date -d "$expdate days" +"%d-%m-%Y")\e[0m";
 	echo " ";
-	echo " ♡ TQ FOR SUPPORT ghostjackVPS™ ♡";
+	echo " ♡ TQ FOR SUPPORT YoLoVPN™ ♡";
 	echo " ";
 	echo " ";
 	echo " ";
@@ -122,7 +122,7 @@ fi
 
 function mon_ssh(){
 clear
-echo -e "\e[31m※\e[0m \e[33mPOWER BY ghostjackVPS™ SERVER\e[0m \e[31m※\e[0m"
+echo -e "\e[31m※\e[0m \e[33mPOWER BY YOLOVPN™ SERVER\e[0m \e[31m※\e[0m"
 echo -e "\e[36m-----------------------------------------------------------\e[0m"
 echo -e " Date-Time      \e[36m|\e[0m  PID  \e[36m|\e[0m    User Name    \e[36m|\e[0m    From IP  "
 echo -e "\e[36m-----------------------------------------------------------\e[0m"
@@ -170,7 +170,7 @@ echo -e "\e[36m============\e[0m\e[36m[\e[0m \e[34mUser Monitor Dropbear & OpenS
 
 function user_list(){
 clear
-echo -e "\e[31m※\e[0m \e[33mPOWER BY ghostjackVPS™ SERVER\e[0m \e[31m※\e[0m"
+echo -e "\e[31m※\e[0m \e[33mPOWER BY YOLOVPN™ SERVER\e[0m \e[31m※\e[0m"
 echo -e "\e[36m--------------------------------------------\e[0m"
 echo "BIL  USERNAME        STATUS       EXP DATE   "
 echo -e "\e[36m--------------------------------------------\e[0m"
@@ -202,7 +202,7 @@ echo -e "\e[36m----------------------------------------------\e[0m"
 
 function expired_users(){
 clear
-echo -e "\e[32m※\e[0m \e[34mPOWER BY ghostjackVPS™ SERVER\e[0m \e[32m※\e[0m"
+echo -e "\e[32m※\e[0m \e[34mPOWER BY YOLOVPN™ SERVER\e[0m \e[32m※\e[0m"
 echo -e "\e[36m---------------------------------\e[0m"
 echo "BIL  USERNAME          EXPIRED "
 echo -e "\e[36m---------------------------------\e[0m"
@@ -231,7 +231,7 @@ rm -r /tmp/*.txt
 
 function not_expired_users(){
 clear
-echo -e "\e[33m※\e[0m \e[34mPOWER BY ghostjackVPS™ SERVER\e[0m \e[33m※\e[0m"
+echo -e "\e[33m※\e[0m \e[34mPOWER BY YoLoVPN™ SERVER\e[0m \e[33m※\e[0m"
 echo -e "\e[36m---------------------------------\e[0m"
 echo "BIL  USERNAME          EXPIRED "
 echo -e "\e[36m---------------------------------\e[0m"
@@ -268,10 +268,10 @@ clear
 echo " ";
 echo -e "\e[36m※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※
 ※                                                   ※
-※\e[0m       [WELCOME MY SYSTEM ghostjack VPS]           \e[36m※
+※\e[0m       [WELCOME MY SYSTEM YoLoVPN]           \e[36m※
 ※                                                   ※
-※\e[0m        \e[32mWhatsApp\e[0m    \e[33m:\e[0m \e[34m+601161604107\e[0m                 \e[36m※
-※\e[0m        \e[32mTelegram\e[0m    \e[33m:\e[0m \e[34m@ghostjack\e[0m                   \e[36m※
+
+
 ※                                                   ※
 ※\e[0m       Copyright \e[31m©\e[0m ghostjackVPS OFFICIAL™ 2019 \e[31m®\e[0m   \e[36m※
 ※                                                   ※
