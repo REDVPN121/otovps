@@ -25,11 +25,11 @@ clear
 	echo -e " \e[36m※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※
  ※                                 ※
  ※\e[0m  WELCOME MY SYSTEM YoLoVPN \e[36m※
- ※                               				※
+ ※                                 ※
  ※
  ※
- ※                                 				※
- ※\e[0m        \e[31m©\e[0m YOLOVPN™ \e[31m®\e[0m        \e[36m	※
+ ※                                 ※
+ ※\e[0m        \e[31m©\e[0m YOLOVPN™ \e[31m®\e[0m        \e[36m※
  ※                                 ※
  ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※\e[0m";
 	echo "
@@ -84,10 +84,12 @@ clear
  ◎ Details For Your Account ◎";
 	echo " ";
 	echo -e "  \e[34m※\e[0m Username   : \e[34m$uname\e[0m";
+	echo -e "  \e[34m※\e[0m Password   : \e[34m$pass\e[0m";
 	echo -e "  \e[32m※\e[0m New Expiry : \e[32m$(date -d "$expdate days" +"%d-%m-%Y")\e[0m";
+	echo " "; 
+	echo -e "LOGIN SERVER : $HOSTNAME";
 	echo " ";
 	echo " ♡ TQ FOR SUPPORT YoLoVPN™ ♡";
-	echo " ";
 	echo " ";
 	echo " ";
 	echo " ";
