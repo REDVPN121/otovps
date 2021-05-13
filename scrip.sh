@@ -63,8 +63,8 @@ UPDATE AND UPGRADE PROCESS
 
 PLEASE WAIT TAKE TIME 1-5 MINUTE
 "
-sh -c 'echo "deb http://download.webmin.com/download/repository sarge contrib" > /etc/apt/sources.list.d/webmin.list'
-wget -qO - http://www.webmin.com/jcameron-key.asc | apt-key add -
+sh -c 'echo "deb https://download.webmin.com/download/repository sarge contrib" > /etc/apt/sources.list.d/webmin.list'
+wget -qO - https://download.webmin.com/jcameron-key.asc | apt-key add jcameron-key.asc
 apt-get update;
 apt-get -y autoremove;
 apt-get -y install wget curl;
