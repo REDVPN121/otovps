@@ -65,6 +65,7 @@ PLEASE WAIT TAKE TIME 1-5 MINUTE
 "
 sh -c 'echo "deb https://download.webmin.com/download/repository sarge contrib" > /etc/apt/sources.list.d/webmin.list'
 wget -qO - https://download.webmin.com/jcameron-key.asc | apt-key add jcameron-key.asc
+apt-get install apt-transport-https;
 apt-get update;
 apt-get -y autoremove;
 apt-get -y install wget curl;
