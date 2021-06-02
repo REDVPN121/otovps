@@ -235,7 +235,7 @@ service vnstat restart
 #sudo apt install apache2
 
 
-wget -O /var/www/html/client.ovpn "https://raw.githubusercontent.com/vyner-stack/otovps/main/client.ovpn"
+wget -O /home/vps/public_html/client.ovpn "https://raw.githubusercontent.com/vyner-stack/otovps/main/client.ovpn"
 wget -O /etc/motd "https://raw.githubusercontent.com/vyner-stack/otovps/main/motd"
 sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 #sed -i 's/1194/443/g' /etc/openvpn/server.conf
