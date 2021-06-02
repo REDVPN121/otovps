@@ -34,7 +34,7 @@ echo "START AUTOSCRIPT"
 clear
 echo "SET TIMEZONE KUALA LUMPUT GMT +8"
 ln -fs /usr/share/zoneinfo/Asia/Kuala_Lumpur /etc/localtime;
-clear
+
 echo "
 ENABLE IPV4 AND IPV6
 
@@ -46,20 +46,24 @@ sysctl -w net.ipv4.ip_forward=1
 sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
 sed -i 's/#net.ipv6.conf.all.forwarding=1/net.ipv6.conf.all.forwarding=1/g' /etc/sysctl.conf
 sysctl -p
-clear
+
 echo "
 REMOVE SPAM PACKAGE
 
 COMPLETE 10%
 "
-apt-get -y --purge remove samba*;
-apt-get -y --purge remove apache2*;
-apt-get -y --purge remove sendmail*;
-apt-get -y --purge remove postfix*;
-apt-get -y --purge remove bind*;
-clear
+#apt-get -y --purge remove samba*;
+#apt-get -y --purge remove apache2*;
+#apt-get -y --purge remove sendmail*;
+#apt-get -y --purge remove postfix*;
+#apt-get -y --purge remove bind*;
+
+# ADDED: Install dnsutils for nslookup
+apt-get -y install dnsutils
+
 echo "
 UPDATE AND UPGRADE PROCESS
+
 
 PLEASE WAIT TAKE TIME 1-5 MINUTE
 "
@@ -101,7 +105,8 @@ chmod +x /usr/local/bin/trial
 # fail2ban & exim & protection
 apt-get install -y grepcidr
 apt-get -y install fail2ban sysv-rc-conf dnsutils dsniff zip unzip;
-wget https://github.com/jgmdev/ddos-deflate/archive/master.zip;unzip master.zip;
+wget https://github.com/jgmdev/ddos-deflate/archive/master.zip;
+unzip master.zip;
 cd ddos-deflate-master && ./install.sh
 service exim4 stop;sysv-rc-conf exim4 off;
 # webmin
@@ -117,10 +122,12 @@ wget -O /etc/default/dropbear "https://raw.githubusercontent.com/vyner-stack/oto
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 # squid3
+
+#ADDED: No need for squid3 with squid
 apt-get -y install squid3
-wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/vyner-stack/otovps/main/squid.conf"
+#wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/vyner-stack/otovps/main/squid.conf"
 wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/vyner-stack/otovps/main/squid.conf"
-sed -i "s/ipserver/$myip/g" /etc/squid3/squid.conf
+#sed -i "s/ipserver/$myip/g" /etc/squid3/squid.conf
 sed -i "s/ipserver/$myip/g" /etc/squid/squid.conf
 # openvpn
 apt-get -y install openvpn
@@ -150,15 +157,13 @@ fi" > /bin/badvpn
 chmod +x /bin/badvpn
 if [ -f /usr/local/bin/badvpn-udpgw ]; then
 echo -e "\033[1;32mBadvpn Installing\033[0m"
-exit
 else
-clear
+echo -e "Nothing to be done further. Continue..."
 fi
 if [ -f /usr/bin/badvpn-udpgw ]; then
 echo -e "\033[1;32mBadvpn Installing\033[0m"
-exit
 else
-clear
+echo -e "Nothing to be done further. Continue..."
 fi
 echo -e "\033[1;31m           Installing Badvpn\n\033[1;37mInstalling gcc Cmake make g++ openssl etc...\033[0m"
 apt-get update >/dev/null 2>/dev/null
@@ -180,7 +185,7 @@ cd /etc/badvpn-install
 cmake ~/badvpn-1.999.128 -DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_UDPGW=1 >/dev/null 2>/dev/null
 echo -e "Compile Badvpn\033[0m"
 make install
-clear
+
 echo -e "\033[1;32m             Installation Complete\033[0m"
 echo -e "\033[1;37mCommand:\n\033[1;31mbadvpn start\033[1;37m Run Badvpn Service"
 echo -e "\033[1;31mbadvpn stop \033[1;37m Stop Badvpn Service\033[0m"
@@ -193,7 +198,10 @@ openssl genrsa -out key.pem 2048
 wget -P /etc/stunnel/ "https://raw.githubusercontent.com/vyner-stack/otovps/main/stunnel.pem"
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 # nginx
-apt-get -y install nginx php5-fpm php5-cli libexpat1-dev libxml-parser-perl
+
+# ADDED: php5 repo  and fixed command
+add-apt-repository ppa:ondrej/php
+apt-get -y install nginx php5.6-fpm php5.6-cli libexpat1-dev libxml-parser-perl
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
 wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/vyner-stack/otovps/main/nginx.conf"
@@ -201,7 +209,11 @@ mkdir -p /home/vps/public_html
 echo "<pre>SETUP BY JACK PM +60176777798</pre>" > /home/vps/public_html/index.php
 echo "<?php phpinfo(); ?>" > /home/vps/public_html/info.php
 wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/vyner-stack/otovps/main/vps.conf"
-sed -i 's/listen = \/var\/run\/php5-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php5/fpm/pool.d/www.conf
+
+# ADDED: Fixed link
+#PHP FPM
+#sed -i 's/listen = \/var\/run\/php5.6-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php/5.6/fpm/pool.d/www.conf
+
 # install vnstat gui
 apt-get install vnstat
 cd /home/vps/public_html/
@@ -216,21 +228,23 @@ sed -i "s/\$language = 'nl';/\$language = 'en';/g" config.php
 sed -i "s/Internal/Internet/g" config.php
 sed -i "/SixXS IPv6/d" config.php
 service vnstat restart
+
+# ADDED: Disabled apache2 since no longer needed
 #fix webserver
-sudo apt update
-sudo apt install apache2
-# etc
+#sudo apt update
+#sudo apt install apache2
+
+
 wget -O /var/www/html/client.ovpn "https://raw.githubusercontent.com/vyner-stack/otovps/main/client.ovpn"
 wget -O /etc/motd "https://raw.githubusercontent.com/vyner-stack/otovps/main/motd"
 sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
-sed -i 's/1194/443/g' /etc/openvpn/server.conf
+#sed -i 's/1194/443/g' /etc/openvpn/server.conf
 sed -i '$ i\port-share 0.0.0.0 444' /etc/openvpn/server.conf
 sed -i "s/ipserver/$myip/g" /var/www/html/client.ovpn
 useradd -m -g users -s /bin/bash jack
-echo "ghost123:ghost123" | chpasswd
 echo "UPDATE AND INSTALL COMPLETE COMPLETE 99% BE PATIENT"
-rm *.sh;rm *.txt;rm *.tar;rm *.deb;rm *.asc;rm *.zip;rm ddos*;
-clear
+#rm *.sh;rm *.txt;rm *.tar;rm *.deb;rm *.asc;rm *.zip;rm ddos*;
+
 # freeradius
 apt-get -y install freeradius
 cat /dev/null > /etc/freeradius/users
@@ -257,27 +271,28 @@ service ssh restart
 service openvpn restart
 service dropbear restart
 service nginx restart
-service php5-fpm restart
+service php5.6-fpm restart
 service webmin restart
-service squid3 restart
+service squid restart
 service fail2ban restart
 service freeradius restart
 clear
 # softether
-apt install build-essential -y;
-cd && wget https://github.com/SoftEtherVPN/SoftEtherVPN_Stable/releases/download/v4.28-9669-beta/softether-vpnserver-v4.28-9669-beta-2018.09.11-linux-x64-64bit.tar.gz
-tar xzf softether-vpnserver-v4.28-9669-beta-2018.09.11-linux-x64-64bit.tar.gz
-clear
-echo  -e "\033[31;7mNOTE: ANSWER 1 AND ENTER THREE TIMES FOR THE COMPILATION TO PROCEED\033[0m"
-cd vpnserver && make && ./vpnserver start
-mkdir /usr/local/vpnserver/
-cd && mv vpnserver /usr/local && cd /usr/local/vpnserver/ && chmod 600 * && chmod 700 vpnserver && chmod 700 vpncmd
-crontab -l > mycron
-echo "@reboot /usr/local/vpnserver/vpnserver start" >> mycron
-crontab mycron
-rm mycron
-/usr/local/vpnserver/vpnserver start
-clear
+#apt install build-essential -y;
+#cd && wget https://github.com/SoftEtherVPN/SoftEtherVPN_Stable/releases/download/v4.28-9669-beta/softether-vpnserver-v4.28-9669-beta-2018.09.11-linux-x64-64bit.tar.gz
+#tar xzf softether-vpnserver-v4.28-9669-beta-2018.09.11-linux-x64-64bit.tar.gz
+
+#echo  -e "\033[31;7mNOTE: ANSWER 1 AND ENTER THREE TIMES FOR THE COMPILATION TO PROCEED\033[0m"
+#cd vpnserver && make && ./vpnserver start
+#mkdir /usr/local/vpnserver/;
+# ADDED: Force to move file if already exist
+#cd && mv -f vpnserver /usr/local && cd /usr/local/vpnserver/ && chmod 600 * && chmod 700 vpnserver && chmod 700 vpncmd
+#crontab -l > mycron
+#echo "@reboot /usr/local/vpnserver/vpnserver start" >> mycron
+#crontab mycron
+#rm mycron
+#/usr/local/vpnserver/vpnserver start
+
 # END SCRIPT
 echo "========================================"  | tee -a log-install.txt
 echo "Service Autoscript VPS (GHOSTJACK)"  | tee -a log-install.txt
@@ -285,7 +300,7 @@ echo "----------------------------------------"  | tee -a log-install.txt
 echo "POWER BY GHOSTJACK CALL +601161604107"  | tee -a log-install.txt
 echo "nginx : http://$myip:80"   | tee -a log-install.txt
 echo "Webmin : http://$myip:10000/"  | tee -a log-install.txt
-echo "OpenVPN  : TCP 443 (client config : http://$myip/client.ovpn)"  | tee -a log-install.txt
+echo "OpenVPN  : TCP 1194 (client config : http://$myip/client.ovpn)"  | tee -a log-install.txt
 echo "Badvpn UDPGW : 7300"   | tee -a log-install.txt
 echo "Stunnel SSL/TLS : 442"   | tee -a log-install.txt
 echo "Squid3 : 3128,3129,8080,8000,9999"  | tee -a log-install.txt
@@ -310,4 +325,4 @@ echo "----------------------------------------"
 echo "========================================"  | tee -a log-install.txt
 echo "      PLEASE REBOOT TAKE EFFECT !"
 echo "========================================"  | tee -a log-install.txt
-cat /dev/null > ~/.bash_history && history -c
+#cat /dev/null > ~/.bash_history && history -c
