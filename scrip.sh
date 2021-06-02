@@ -133,7 +133,7 @@ sed -i "s/ipserver/$myip/g" /etc/squid/squid.conf
 apt-get -y install openvpn
 cd /etc/openvpn/
 wget https://raw.githubusercontent.com/vyner-stack/otovps/main/openvpn.tar;tar xf openvpn.tar;rm openvpn.tar
-sed -i "s/ipserver/$myip/g" client.ovpn
+sed -i "s/ipserver/$myip/g" /var/www/html/client.ovpn
 wget -O /etc/rc.local "https://raw.githubusercontent.com/vyner-stack/otovps/main/rc.local"
 chmod +x /etc/rc.local
 #wget -O /etc/iptables.up.rules "https://raw.githubusercontent.com/vyner-stack/otovps/main/iptables.up.rules"
