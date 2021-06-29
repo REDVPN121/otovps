@@ -122,7 +122,8 @@ wget -O /etc/default/dropbear "https://raw.githubusercontent.com/vyner-stack/oto
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 # squid3
-
+# install python
+apt-get -y install python
 #ADDED: No need for squid3 with squid
 apt-get -y install squid3
 #wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/vyner-stack/otovps/main/squid.conf"
