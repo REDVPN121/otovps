@@ -41,7 +41,7 @@ clear
 	echo " ";
 	echo -e "LOGIN SERVER : $HOSTNAME";
 	echo " ";
-	echo "♡ TQ FOR SUPPORT YoLoVPN™ ♡";
+	echo "♡ TQ FOR SUPPORT REDVPN™ ♡";
 	echo " ";
 	fi
 }
